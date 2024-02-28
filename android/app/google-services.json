@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "156340334899",
+    "project_id": "event-management-af69d",
+    "storage_bucket": "event-management-af69d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156340334899:android:36b912a7c9c419a708ce46",
+        "android_client_info": {
+          "package_name": "com.example.event_management_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG5O_nDG2mdPoigVPYTOsDyewBTDzBWf4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
