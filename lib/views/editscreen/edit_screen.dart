@@ -72,7 +72,7 @@ class _EditScreenState extends State<EditScreen> {
               ),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 26, 58, 118)),
+                      backgroundColor: const Color.fromARGB(255, 26, 58, 118)),
                   onPressed: () {
                     editStudent(context);
                   },
@@ -110,26 +110,5 @@ class _EditScreenState extends State<EditScreen> {
     } catch (e) {
       log("Error updating student: $e");
     }
-  }
-
-  Future<void> _showImageOptions(BuildContext context) async {
-    return showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: textPoppins(data: 'Choose a option: '),
-          actions: [
-            TextButton(
-                onPressed: () async {},
-                child: textPoppins(
-                    data: 'Camera', color: Color.fromARGB(255, 26, 58, 118))),
-            TextButton(
-                onPressed: () async {},
-                child: textPoppins(
-                    data: 'Gallery', color: Color.fromARGB(255, 26, 58, 118))),
-          ],
-        );
-      },
-    );
   }
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: sort_child_properties_last, use_super_parameters, prefer_const_constructors_in_immutables
+
 import 'dart:io';
 import 'package:event_management_firebase/controllers/add_page_provider.dart';
 import 'package:event_management_firebase/controllers/image_provider.dart';
@@ -48,7 +50,7 @@ class AddScreen extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(vertical: 5.0),
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(8.0),
-                            child: Container(
+                            child: SizedBox(
                               child: Lottie.asset('asset/image add.json',
                                   fit: BoxFit.fill),
                               height: mediaQuery.height * 0.25,
@@ -74,7 +76,7 @@ class AddScreen extends StatelessWidget {
                         ElevatedButton.icon(
                           style: ElevatedButton.styleFrom(
                               backgroundColor:
-                                  Color.fromARGB(255, 26, 58, 118)),
+                                  const Color.fromARGB(255, 26, 58, 118)),
                           onPressed: () {
                             imageProvider.setImage(ImageSource.camera);
                           },
@@ -91,7 +93,7 @@ class AddScreen extends StatelessWidget {
                         ElevatedButton.icon(
                           style: ElevatedButton.styleFrom(
                               backgroundColor:
-                                  Color.fromARGB(255, 26, 58, 118)),
+                                  const Color.fromARGB(255, 26, 58, 118)),
                           onPressed: () {
                             imageProvider.setImage(ImageSource.gallery);
                           },
@@ -118,7 +120,8 @@ class AddScreen extends StatelessWidget {
                         keyboardType: TextInputType.number),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 26, 58, 118)),
+                          backgroundColor:
+                              const Color.fromARGB(255, 26, 58, 118)),
                       onPressed: () {
                         addProvider.addStudent(context);
 
@@ -130,7 +133,7 @@ class AddScreen extends StatelessWidget {
                         );
                       },
                       child: Padding(
-                          padding: EdgeInsets.all(12.0),
+                          padding: const EdgeInsets.all(12.0),
                           child: textPoppins(data: 'ADD', color: Colors.white)),
                     ),
                   ],

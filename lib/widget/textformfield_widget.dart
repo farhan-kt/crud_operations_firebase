@@ -22,7 +22,7 @@ Widget customTextFormField(
     inputFormatters: inputFormatters,
     maxLength: maxlength,
     decoration: InputDecoration(
-      labelStyle: TextStyle(color: Color.fromARGB(255, 26, 58, 118)),
+      labelStyle: const TextStyle(color: Color.fromARGB(255, 26, 58, 118)),
       labelText: labelText,
       enabledBorder: const OutlineInputBorder(
         borderSide: BorderSide(color: Color.fromARGB(255, 26, 58, 118)),

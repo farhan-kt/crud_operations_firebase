@@ -42,6 +42,6 @@ class AddProvider extends ChangeNotifier {
         eventType: eventtype);
     eventProvider.addStudent(event);
     clearTextField();
-    imageProvider.selectedImage = null;
+    // imageProvider.selectedImage = null;
   }
 }

@@ -72,7 +72,7 @@ class HomeScreen extends StatelessWidget {
                                 ),
                                 leading: CircleAvatar(
                                   backgroundColor:
-                                      Color.fromARGB(255, 26, 58, 118),
+                                      const Color.fromARGB(255, 26, 58, 118),
                                   backgroundImage: NetworkImage(data.image!),
                                 ),
                                 trailing: Row(
@@ -146,8 +146,8 @@ class HomeScreen extends StatelessWidget {
             ),
           );
         },
-        backgroundColor: Color.fromARGB(255, 26, 58, 118),
-        child: Icon(
+        backgroundColor: const Color.fromARGB(255, 26, 58, 118),
+        child: const Icon(
           Icons.add,
           color: Colors.white,
         ),

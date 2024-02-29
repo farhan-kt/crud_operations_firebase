@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, use_super_parameters
 
 import 'package:event_management_firebase/model/model.dart';
 import 'package:event_management_firebase/widget/text_style_widget.dart';
@@ -18,9 +18,8 @@ class DetailScreen extends StatelessWidget {
           //   event.name ?? 'Event Details',
           //   style: TextStyle(color: Colors.white),
           // ),
-          title: textPoppins(
-              data: event.name!.toUpperCase() ?? 'Event Details',
-              color: Colors.white),
+          title:
+              textPoppins(data: event.name!.toUpperCase(), color: Colors.white),
           centerTitle: true,
           backgroundColor: Color.fromARGB(255, 26, 58, 118),
         ),
