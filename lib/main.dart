@@ -1,6 +1,5 @@
 import 'package:event_management_firebase/controllers/event_provider.dart';
 import 'package:event_management_firebase/controllers/add_page_provider.dart';
-import 'package:event_management_firebase/controllers/image_provider.dart';
 import 'package:event_management_firebase/model/firebase_options.dart';
 import 'package:event_management_firebase/views/listscreen/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -20,9 +19,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (context) => ImageProviderr(),
-        ),
         ChangeNotifierProvider(
           create: (context) => EventProvider(),
         ),

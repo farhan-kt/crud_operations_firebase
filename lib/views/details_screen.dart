@@ -1,8 +1,12 @@
 // ignore_for_file: prefer_const_constructors, use_super_parameters
 
+import 'dart:io';
+
+import 'package:event_management_firebase/controllers/add_page_provider.dart';
 import 'package:event_management_firebase/model/model.dart';
 import 'package:event_management_firebase/widget/text_style_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DetailScreen extends StatelessWidget {
   final EventModel event;
@@ -11,13 +15,10 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size mediaQuery = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          // title: Text(
-          //   event.name ?? 'Event Details',
-          //   style: TextStyle(color: Colors.white),
-          // ),
           title:
               textPoppins(data: event.name!.toUpperCase(), color: Colors.white),
           centerTitle: true,
@@ -28,6 +29,21 @@ class DetailScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Container(
+                height: 150,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  image: event.image != null
+                      ? DecorationImage(
+                          image: NetworkImage(event.image!),
+                          fit: BoxFit.cover,
+                        )
+                      : null,
+                ),
+              ),
+              SizedBox(height: 10),
               ListTile(
                 title: Text(
                   "Name",

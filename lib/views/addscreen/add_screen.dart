@@ -2,7 +2,6 @@
 
 import 'dart:io';
 import 'package:event_management_firebase/controllers/add_page_provider.dart';
-import 'package:event_management_firebase/controllers/image_provider.dart';
 import 'package:event_management_firebase/views/listscreen/home_screen.dart';
 import 'package:event_management_firebase/widget/text_style_widget.dart';
 import 'package:event_management_firebase/widget/textformfield_widget.dart';
@@ -17,7 +16,6 @@ class AddScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final imageProvider = Provider.of<ImageProviderr>(context, listen: false);
     final addProvider = Provider.of<AddProvider>(context, listen: false);
     final mediaQuery = MediaQuery.of(context).size;
 
@@ -45,7 +43,7 @@ class AddScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    if (imageProvider.selectedImage == null)
+                    if (addProvider.selectedImage == null)
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 5.0),
                         child: ClipRRect(
@@ -60,13 +58,15 @@ class AddScreen extends StatelessWidget {
                     else
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: Image.file(
-                            File(imageProvider.selectedImage!.path),
-                            height: mediaQuery.height * 0.2,
-                            width: mediaQuery.width * 0.8,
-                            fit: BoxFit.cover,
+                        child: Consumer<AddProvider>(
+                          builder: (context, value, child) => ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.file(
+                              File(value.selectedImage!.path),
+                              height: mediaQuery.height * 0.2,
+                              width: mediaQuery.width * 0.8,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
@@ -78,7 +78,7 @@ class AddScreen extends StatelessWidget {
                               backgroundColor:
                                   const Color.fromARGB(255, 26, 58, 118)),
                           onPressed: () {
-                            imageProvider.setImage(ImageSource.camera);
+                            addProvider.setImage(ImageSource.camera);
                           },
                           icon: const Icon(
                             Icons.camera_alt,
@@ -95,7 +95,7 @@ class AddScreen extends StatelessWidget {
                               backgroundColor:
                                   const Color.fromARGB(255, 26, 58, 118)),
                           onPressed: () {
-                            imageProvider.setImage(ImageSource.gallery);
+                            addProvider.setImage(ImageSource.gallery);
                           },
                           icon: const Icon(Icons.photo, color: Colors.white),
                           label:
@@ -131,6 +131,7 @@ class AddScreen extends StatelessWidget {
                             builder: (context) => const HomeScreen(),
                           ),
                         );
+                        addProvider.selectedImage = null;
                       },
                       child: Padding(
                           padding: const EdgeInsets.all(12.0),

@@ -1,9 +1,8 @@
 import 'dart:io';
-
 import 'package:event_management_firebase/controllers/event_provider.dart';
-import 'package:event_management_firebase/controllers/image_provider.dart';
 import 'package:event_management_firebase/model/model.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 class AddProvider extends ChangeNotifier {
@@ -12,6 +11,16 @@ class AddProvider extends ChangeNotifier {
   TextEditingController phoneController = TextEditingController();
 
   String selectedValue = 'Wedding';
+
+  File? selectedImage;
+  ImagePicker imagePicker = ImagePicker();
+
+  void setImage(ImageSource source) async {
+    final pickedImage = await imagePicker.pickImage(source: source);
+
+    selectedImage = pickedImage != null ? File(pickedImage.path) : null;
+    notifyListeners();
+  }
 
   void setSelectedValue(String val) {
     selectedValue = val;
@@ -26,13 +35,13 @@ class AddProvider extends ChangeNotifier {
 
   void addStudent(BuildContext context) {
     final eventProvider = Provider.of<EventProvider>(context, listen: false);
-    final imageProvider = Provider.of<ImageProviderr>(context, listen: false);
+
     final name = nameController.text;
     final place = placeController.text;
     final phone = phoneController.text;
     final eventtype = selectedValue;
 
-    eventProvider.imageAdder(File(imageProvider.selectedImage!.path));
+    eventProvider.imageAdder(File(selectedImage!.path));
 
     final event = EventModel(
         phone: phone,
@@ -42,6 +51,5 @@ class AddProvider extends ChangeNotifier {
         eventType: eventtype);
     eventProvider.addStudent(event);
     clearTextField();
-    // imageProvider.selectedImage = null;
   }
 }
